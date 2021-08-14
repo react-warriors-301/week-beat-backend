@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/react-warriors-301/week-beat-backend/issues"
   },
-  "homepage": "https://github.com/react-warriors-301/week-beat-backend#readme"
+  "homepage": "https://github.com/react-warriors-301/week-beat-backend#readme",
+  "dependencies": {
+    "npm": "^7.20.6"
+  }
 }
