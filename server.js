@@ -10,12 +10,9 @@ const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3001;
 app.use(express.json());
-
 app.get('/events',getEvents);
 app.get('/movies',getMovies);
-
 app.get('/restaurants',getRestaurants);
 app.get('/activity',getActivity);
-
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
