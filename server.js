@@ -11,7 +11,7 @@ app.use(cors());
 const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.get('/events',getEvents);
-pp.get('/movies',getMovies);
+app.get('/movies',getMovies);
 app.get('/restaurants',getRestaurants);
 app.get('/activity',getActivity); 
 

@@ -3,7 +3,7 @@ var axios = require( 'axios' );
 
 //http://localhost:3001/restaurants?location=Houston
 
-function getRestaurants( request, response ) {
+async function getRestaurants( request, response ) {
 
   let location = request.query.location;
 
@@ -11,7 +11,7 @@ function getRestaurants( request, response ) {
     method: 'get',
     url: `https://api.yelp.com/v3/businesses/search?location=${location}`,
     headers: {
-      'Authorization': `Bearer ${process.env.API_KEY}`
+      'Authorization': `Bearer ${process.env.RES_API}`
     }
   };
 
@@ -19,18 +19,10 @@ function getRestaurants( request, response ) {
   axios( config )
     .then( result => {
       let restaurantsData = result.data.businesses;
+      response.send(resObject(restaurantsData));
 
-      let restaurantArr = [];
-      restaurantsData.map( item=>{
-        const name = item.name;
-        const image = item.image_url;
-        const rating = item.rating;
-        const price = item.price;
-        const phone = item.phone;
+      
 
-        restaurantArr.push( name, image, rating, price, phone );
-
-      } );
       console.log( restaurantArr );
       response.send( restaurantArr );
 
@@ -42,6 +34,35 @@ function getRestaurants( request, response ) {
 
 }
 
+const resObject = (resArr) => {
+  let resArray=resArr;
+  
+  let restaurantArr = [];
+  resArray.map( item=>{
+    const name = item.name;
+    const image = item.image_url;
+    const rating = item.rating;
+    const price = item.price;
+
+ restaurantArr.push(new Res(name, image, rating, price));
+  
+  
+      })
+      return restaurantArr;
+  
+      
+  }
+  
+  class Res {
+      constructor(name, image, rating, price) {
+  
+              this.name = name,
+              this.image = image,
+              this.rating = rating,
+              this.price = price
+            }
+  }
+  
 
 
 module.exports = getRestaurants;
