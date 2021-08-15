@@ -3,7 +3,6 @@
 
 #### Code 301 Final Project
 
-
 # API will work with:
 
 1- restuarants API 
