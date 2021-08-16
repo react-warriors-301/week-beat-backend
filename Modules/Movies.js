@@ -1,36 +1,23 @@
 const axios = require('axios');
 
 async function getMovies (req, res) {
-    const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.MOV_API}`
+   const with_genres=req.query.with_genres
 
-    axios
-        .get(URL)
-        .then(item => {
-            const moviesArr = item.data.genres[0];
-
-            const URLS = `https://api.themoviedb.org/4/discover/movie?api_key=${process.env.MOV_API}&with_genres=${moviesArr.id}`
-            // console.log(item.data);
+            const URLS = `https://api.themoviedb.org/4/discover/movie?api_key=${process.env.MOV_API}&with_genres=${with_genres}`
             axios
                 .get(URLS)
                 .then(items => {
 
                     let dataMov = items.data;
-                    console.log(URLS);
                     res.send(moviesObject(dataMov));
                 }).catch(error => {
                     res.send(error)
                 })
-        })
-        .catch(error => {
-            res.send(error)
-        })
-
-
-
-}
+        
+      }
 const moviesObject = (moviesArr) => {
 let movieArray=moviesArr.results;
-
+console.log(movieArray)
     const moviesJson = [];
     movieArray.map(element => {
 console.log(element.title);
@@ -45,7 +32,7 @@ console.log(element.title);
 
 
     })
-    return moviesJson;
+ return moviesJson;
 
     
 }
