@@ -3,7 +3,9 @@ const axios = require('axios');
 
 async function getEvents(req, res) {
     const country = req.query.country;
-    const URL = `https://serpapi.com/search.json?q=events+in+${country}&google_domain=google.com&gl=us&hl=en&api_key=${process.env.EVENT_API}`;
+    const URL = `https://serpapi.com/search.json?engine=google_events&q=Events+in+${country}&hl=en&gl=us&api_key=${process.env.EVENT_API}`;
+
+    
     axios
         .get(URL)
         .then(result => {
