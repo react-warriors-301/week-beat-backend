@@ -23,7 +23,6 @@ const myFavRes = new mongoose.Schema({
 const myBlog = new mongoose.Schema({
     title: String,
     blogText: String,
-    image: String,
     rate: String,
 })
 
@@ -76,6 +75,13 @@ function weekSeeds() {
         blog: []
     })
     user5.save();
+    const user6 = new Users({
+        email: 'farahsarese98@gmail.com',
+        movies: [],
+        res: [],
+        blog: []
+    })
+    user6.save();
 }
 
 
