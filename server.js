@@ -16,7 +16,7 @@ const deleteFavRes =require('./DataBase/DeleteFavRes')
 const addResHandler=require('./DataBase/FavResModel')
 const updateBlog=require('./DataBase/UpdateBlog')
 const app = express();
-
+const getAllBlogs=require('./DataBase/GetAllBlogs');
 
 app.use(cors());
 const PORT = process.env.PORT || 3001;
@@ -32,6 +32,8 @@ app.delete('/deleteBlog/:index',deleteData);
 app.delete('/deletFav/:index',deleteFav);
 app.delete('/deleteRes/:index',deleteFavRes)
 app.put('/update/:index', updateBlog);
+
+app.get('/all',getAllBlogs);
 
 app.post('/addmovies',FavMoviesModel);
 

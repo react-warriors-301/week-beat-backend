@@ -8,7 +8,7 @@ const MongooseItems = require("./MainSchema"); // this one is object cuz i expor
 
 
 function addBlogHandler(req, res) {
-  const {title,desc,email} = req.body;
+  const {title,desc,email,name,image} = req.body;
 console.log(desc);
 console.log(title);
 
@@ -19,7 +19,9 @@ console.log(title);
     } else {
       data.blog.push({
        title:title,
-       blogText:desc
+       blogText:desc,
+       name:name,
+       image:image
           });
           data.save();
       res.send(data);

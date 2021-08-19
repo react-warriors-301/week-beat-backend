@@ -23,7 +23,9 @@ const myFavRes = new mongoose.Schema({
 const myBlog = new mongoose.Schema({
     title: String,
     blogText: String,
-    rate: String,
+    name: String,
+    image:String,
+
 })
 
 
